@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Invoice</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script>
+        function addProduct() {
+            const container = document.getElementById('product-container');
+            const row = document.createElement('div');
+            row.innerHTML = `
+                <input name="product" placeholder="Product Name" required autocomplete="off">
+                <input name="qty" type="number" value="1" required autocomplete="off">
+                <input name="price" type="number" step="0.01" value="0.00" required autocomplete="off">
+                <br><br>
+            `;
+            container.appendChild(row);
+        }
+    </script>
+</head>
+<body>
+    <h2>Create Invoice</h2>
+    <form method="POST" autocomplete="off">
+        <input name="name" placeholder="Customer Name" required><br><br>
+        <input name="address" placeholder="Address" required autocomplete="off"><br><br>
+        <input name="phone" placeholder="Phone" required><br><br>
+
+        <div id="product-container">
+            <div>
+                <input name="product" placeholder="Product Name" required autocomplete="off">
+                <input name="qty" type="number" value="1" required autocomplete="off">
+                <input name="price" type="number" step="0.01" value="0.00" required autocomplete="off">
+                <br><br>
+            </div>
+        </div>
+
+        <button type="button" onclick="addProduct()">+ Add Product</button><br><br>
+        <button type="submit">Generate Invoice</button>
+    </form>
+</body>
+</html>
